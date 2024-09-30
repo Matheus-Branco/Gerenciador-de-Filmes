@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http'
 import {Injectable} from '@angular/core'
 import { Observable } from 'rxjs'
+import { environment } from '../../environments/environment';
 
   @Injectable({
     providedIn: 'root',
   })
   export class FilmeService {
-    private readonly urlApi: string = 'https: //api.themoviedb.org/3/movie/'
+    private readonly urlApi: string = 'https://api.themoviedb.org/3/movie/';
 
     constructor(private http: HttpClient){}
 
     public selecionarFilmesPopulares(): Observable<any> {
       const urlCompleto = `${this.urlApi}/popular?language=pt-BR`
 
-      return this.http.get<any>(urlCompleto)
+      return this.http.get<any>(urlCompleto, this.obterHeadersAutorizacao())
     }
 
     private obterHeadersAutorizacao() {
       return {
         method: 'GET',
-        header: {
+        headers: {
           accept: 'application/json',
-          Authorization: chaveDaApi
-        }
-      }
+          Authorization: environment.API_KEY,
+        },
+      };
     }
   }

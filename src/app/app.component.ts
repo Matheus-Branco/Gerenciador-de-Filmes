@@ -12,10 +12,10 @@ import { FilmeService } from './services/filme.service';
 export class AppComponent implements OnInit {
 constructor(private filmeService: FilmeService){}
 
-ngOnInit(): void {
-  this.filmeService.selecionarFilmesPopulares().subscribe((f) => {
-    console.log(f)
-  });
+  ngOnInit(): void {
+    this.filmeService.selecionarFilmesPopulares().subscribe((f) => {
+      console.log(f)
+    });
   }
 }
 
