@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FilmeService } from './services/filme.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,13 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'Gerenciador-Filmes';
+export class AppComponent implements OnInit {
+constructor(private filmeService: FilmeService){}
+
+ngOnInit(): void {
+  this.filmeService.selecionarFilmesPopulares().subscribe((f) => {
+    console.log(f)
+  });
+  }
 }
+
