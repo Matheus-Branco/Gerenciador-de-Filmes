@@ -9,12 +9,25 @@
       alt="Imagem do Filme" {{filme.titulo}}>
       <div class="card-body px-2">
         <span [ngClass]="mapearCorDaNota(filme.porcentagemNota)" class="app-porcentagem-nota rounded-circle py-1 px-2">
-          <span class="app-valor-porcentagem">{{ filme.porcentagemNota }}</span>
+          <span class="app-valor-porcentagem">
+            {{ filme.porcentagemNota }}
+          </span>
           <i class="app-icone-porcentagem bi bi-percent"></i>
         </span>
-        <p class="card-title fw-semibold mb-0">{{filme.titulo}}</p>
-        <small class="card-subtitle">{{filme.lancamento}}</small>
+        <p class="card-title fw-semibold mb-0">
+          {{filme.titulo}}
+        </p>
+        <small class="card-subtitle">
+          {{filme.lancamento}}
+        </small>
       </div>
     </div>
   </div>
+</section>
+
+<section aria-label="Paginação" class="row justify-content-center mt-4">
+  <button (click)="buscarFilmesPopulares()"
+  class="app-botao-gradiente col-lg-4 btn btn-lg fw-semibold rounded-pill">
+    Mais resultados
+  </button>
 </section>
