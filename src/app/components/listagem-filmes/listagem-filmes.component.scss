@@ -12,11 +12,11 @@
   }
 }
 
-.app-porcentagem-nota{
+.app-porcentagem-nota {
   background-color: #081c22;
   color: #f3f3f3;
 
-  width: 39px;
+  width: 37px;
   height: 37px;
 
   position: absolute;
@@ -24,23 +24,14 @@
   top: 1%;
   left: 1%;
 
-  .app-valor-porcentagem{
+  .app-valor-porcentagem {
     position: absolute;
 
     top: 12%;
     left: 18%;
   }
 
-  .app-valor-porcentagem{
-    position: absolute;
-
-    bottom: 15%;
-    right: 7%;
-
-    font-size: 9px;
-  }
-
-  .app-icone-porcentagem{
+  .app-icone-porcentagem {
     position: absolute;
 
     bottom: 15%;
@@ -60,26 +51,4 @@
   );
 
   color: #ffff;
-}
-
-.app-borda-nota-mais-baixa {
-  border: 2px solid transparent;
-  border-top-color: #f62424;
-}
-
-.app-borda-nota-baixa {
-  border: 2px solid transparent;
-  border-top-color: #f62424;
-  border-right-color: #f62424;
-}
-
-.app-borda-nota-media {
-  border: 2px solid transparent;
-  border-top-color: #ffed23;
-  border-right-color: #ffed23;
-  border-bottom-color: #ffed23;
-}
-
-.app-borda-nota-alta {
-  border: 2px solid #3fe437;
 }
