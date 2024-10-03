@@ -7,6 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { GeneroFilme } from '../../models/genero-filme-model';
 import { VideoFilme } from '../../models/video-filme.model';
 import { MembroCreditos } from '../../models/membro-creditos.model';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { FilmeFavorito } from '../../models/filme-favorito.model';
 
 @Component({
   selector: 'app-detalhes-filme',
@@ -21,6 +23,7 @@ export class DetalhesFilmeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private filmeService: FilmeService,
+    private localStorageService: LocalStorageService,
     private domSanitizer: DomSanitizer
   ){}
   ngOnInit(): void {
@@ -35,6 +38,26 @@ export class DetalhesFilmeComponent implements OnInit {
     this.filmeService.selecionarDetalhesFilmePorId(id).subscribe((f) => {
       this.detalhes = this.mapearDetalhesFilme(f);
     });
+  }
+
+  public alterarStatusFavorito(id: number){
+    if(!this.detalhes) return;
+
+    if(this.localStorageService.favoritoJaExiste(id)){
+      this.detalhes.favorito = false;
+
+      this.localStorageService.removerFavorito(id);
+    } else{
+      this.detalhes.favorito = true;
+
+      const novoFavorito: FilmeFavorito = {
+        id: id,
+        titulo: this.detalhes.titulo,
+        urlImagem: this.detalhes.urlPoster
+      }
+
+      this.localStorageService.salvarFavorito(novoFavorito);
+    }
   }
 
   public mapearCorDaNota(porcentagemNota: string): string {
@@ -65,6 +88,8 @@ export class DetalhesFilmeComponent implements OnInit {
       .map((v: any) => this.MapearVideoFilme(v)),
 
       elencoPrincipal: obj.credits.cast.map(this.mapearElencoFilme),
+
+      favorito: this.localStorageService.favoritoJaExiste(obj.id)
     };
   }
   private mapearGeneroFilme(obj: any): GeneroFilme{
