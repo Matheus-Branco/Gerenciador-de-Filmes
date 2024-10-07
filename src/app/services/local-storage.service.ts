@@ -5,7 +5,6 @@ import { FilmeFavorito } from '../models/filme-favorito.model';
   providedIn: 'root'
 })
 export class LocalStorageService {
-
   private readonly chave = 'academia:filmes';
 
   private favoritos: FilmeFavorito[];

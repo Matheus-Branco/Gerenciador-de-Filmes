@@ -1,5 +1,7 @@
-@import "bootstrap";
-@import"bootstrap-icons";
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons";
+
+@import "ngx-toastr/toastr-bs5-alert";
 
 .app-borda-nota-mais-baixa {
   border: 2px solid transparent;
@@ -21,4 +23,30 @@
 
 .app-borda-nota-alta {
   border: 2px solid #3fe437;
+}
+
+.app-botao-gradiente {
+  border: none;
+
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 0%,
+    rgba(1, 180, 228, 1) 100%
+  );
+
+  color: #ffff;
+}
+
+.app-card-filme {
+  transition: color, box-shadow 200ms ease-in-out;
+
+  &:hover {
+    -webkit-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.65);
+    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.65);
+
+    .app-titulo-card {
+      color: #209fc2;
+    }
+  }
 }

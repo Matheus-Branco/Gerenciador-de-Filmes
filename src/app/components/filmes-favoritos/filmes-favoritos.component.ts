@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FilmeFavorito } from '../../models/filme-favorito.model';
-import { NgFor, NgForOf } from '@angular/common';
+import { NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
