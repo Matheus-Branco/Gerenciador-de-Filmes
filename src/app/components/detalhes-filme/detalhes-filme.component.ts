@@ -9,6 +9,7 @@ import { VideoFilme } from '../../models/video-filme.model';
 import { MembroCreditos } from '../../models/membro-creditos.model';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { FilmeFavorito } from '../../models/filme-favorito.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detalhes-filme',
@@ -24,6 +25,7 @@ export class DetalhesFilmeComponent implements OnInit {
     private route: ActivatedRoute,
     private filmeService: FilmeService,
     private localStorageService: LocalStorageService,
+    private toastrService: ToastrService,
     private domSanitizer: DomSanitizer
   ){}
   ngOnInit(): void {
@@ -47,6 +49,10 @@ export class DetalhesFilmeComponent implements OnInit {
       this.detalhes.favorito = false;
 
       this.localStorageService.removerFavorito(id);
+
+      this.toastrService.success(
+        'O Favorito foi removido com secesso!',
+        'Favorito removido');
     } else{
       this.detalhes.favorito = true;
 
@@ -54,9 +60,13 @@ export class DetalhesFilmeComponent implements OnInit {
         id: id,
         titulo: this.detalhes.titulo,
         urlImagem: this.detalhes.urlPoster
-      }
+      };
 
       this.localStorageService.salvarFavorito(novoFavorito);
+
+      this.toastrService.success(
+        'O Favorito foi adicionado com secesso!',
+        'Favorito adicionado');
     }
   }
 
